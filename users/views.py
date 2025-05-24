@@ -4,6 +4,8 @@ from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
+from rest_framework.permissions import AllowAny
+from rest_framework.decorators import permission_classes
 
 from .serializers import RegisterSerializer, LoginSerializer
 
@@ -21,6 +23,7 @@ def get_tokens_for_user(user):
 
 @swagger_auto_schema(method='post', request_body=RegisterSerializer, responses={201: "User registered"})
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def register_view(request):
     serializer = RegisterSerializer(data=request.data)
     if serializer.is_valid():
@@ -40,6 +43,7 @@ def register_view(request):
 
 @swagger_auto_schema(method='post', request_body=LoginSerializer, responses={200: "User logged in"})
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def login_view(request):
     serializer = LoginSerializer(data=request.data)
     if serializer.is_valid():

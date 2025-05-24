@@ -18,7 +18,6 @@ def bus_list(request):
 
 @api_view(['GET'])
 @swagger_auto_schema(request_body=BusSerializer, responses={200: BusSerializer()})
-
 def bus_detail(request, id):
     bus = get_object_or_404(Bus, id=id)
     serializer = BusSerializer(bus)
@@ -33,6 +32,10 @@ def bus_detail(request, id):
 )
 @api_view(['POST'])
 def bus_create(request):
+    if request.user.role != 'admin':
+        return Response({'detail': 'You do not have permission to perform this action.'},
+                        status=status.HTTP_403_FORBIDDEN)
+
     serializer = BusSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -61,6 +64,10 @@ def bus_update(request, id):
 @swagger_auto_schema(responses={204: 'Bus deleted'})
 @permission_classes([IsAuthenticated])
 def bus_delete(request, id):
+    if request.user.role != 'admin':
+        return Response({'detail': 'You do not have permission to perform this action.'},
+                        status=status.HTTP_403_FORBIDDEN)
+
     bus = get_object_or_404(Bus, id=id)
     bus.delete()
     return Response({"detail": "Bus deleted successfully."}, status=status.HTTP_204_NO_CONTENT)
