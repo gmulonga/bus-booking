@@ -38,11 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'daphne',
     'django.contrib.staticfiles',
     'rest_framework',
     'drf_yasg',
     'users',
     'buses',
+    "channels",
 ]
 
 REST_FRAMEWORK = {
@@ -87,6 +89,8 @@ TEMPLATES = [
     },
 ]
 
+
+ASGI_APPLICATION = 'bus_booking_project.asgi.application'
 WSGI_APPLICATION = 'bus_booking_project.wsgi.application'
 
 
@@ -98,6 +102,15 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("localhost", 6379)],
+        },
+    },
 }
 
 # settings.py
