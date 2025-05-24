@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
+from drf_yasg.utils import swagger_auto_schema
 from .serializers import RegisterSerializer, LoginSerializer
 
 def get_tokens_for_user(user):
@@ -15,6 +16,7 @@ def get_tokens_for_user(user):
     }
 
 class RegisterView(APIView):
+    @swagger_auto_schema(request_body=RegisterSerializer, responses={201: "User registered"})
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid():
@@ -32,6 +34,7 @@ class RegisterView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class LoginView(APIView):
+    @swagger_auto_schema(request_body=LoginSerializer, responses={200: "User logged in"})
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
         if serializer.is_valid():
