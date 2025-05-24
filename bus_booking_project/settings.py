@@ -117,6 +117,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:5173',
     'https://api.transfa.org',
+    'https://staging.transfa.org',
 ]
 
 # settings.py
