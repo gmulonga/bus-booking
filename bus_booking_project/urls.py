@@ -13,9 +13,9 @@ schema_view = get_schema_view(
         contact=openapi.Contact(email="your-email@example.com"),
         license=openapi.License(name="BSD License"),
     ),
+    url='https://api.transfa.org/',
     public=True,
     permission_classes=(permissions.AllowAny,),
-    schemes=['https', 'http']
 )
 
 urlpatterns = [

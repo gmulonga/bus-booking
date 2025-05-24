@@ -129,6 +129,7 @@ SWAGGER_SETTINGS = {
         }
     },
     'USE_SESSION_AUTH': False,
+    'USE_HTTPS': True,
 }
 
 
