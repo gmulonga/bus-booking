@@ -113,6 +113,12 @@ CHANNEL_LAYERS = {
     },
 }
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'https://api.transfa.org',
+]
+
 # settings.py
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
