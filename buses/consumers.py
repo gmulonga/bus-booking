@@ -28,14 +28,12 @@ class BusConsumer(AsyncWebsocketConsumer):
         longitude = text_data_json.get('longitude')
 
         if latitude is not None and longitude is not None:
-            # Update the Bus location in DB
             bus = await self.get_bus()
             if bus:
                 bus.latitude = latitude
                 bus.longitude = longitude
                 await self.save_bus(bus)
         else:
-            # Fallback for other messages (optional)
             message = text_data_json.get('message')
             if message:
                 await self.channel_layer.group_send(

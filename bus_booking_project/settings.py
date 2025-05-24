@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-+#mz=c&nx2(k%b@6rl3kkeh9%szc&8-@hhy@%+4%q592f-_(l7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['api.transfa.org', 'localhost', '127.0.0.1']
 
 AUTH_USER_MODEL = 'users.User'
 
