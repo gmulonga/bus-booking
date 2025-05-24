@@ -113,11 +113,9 @@ CHANNEL_LAYERS = {
     },
 }
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://localhost:5173',
+CSRF_TRUSTED_ORIGINS = [
     'https://api.transfa.org',
-    'https://staging.transfa.org',
+    'http://localhost:5173',
 ]
 
 # settings.py
