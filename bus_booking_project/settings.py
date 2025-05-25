@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'drf_yasg',
     'users',
     'buses',
-    "channels",
+    'channels',
+    'booking',
 ]
 
 REST_FRAMEWORK = {

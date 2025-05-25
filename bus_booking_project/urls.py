@@ -13,7 +13,7 @@ schema_view = get_schema_view(
         contact=openapi.Contact(email="your-email@example.com"),
         license=openapi.License(name="BSD License"),
     ),
-    url='https://api.transfa.org/',
+    # url='https://api.transfa.org/',
     public=True,
     permission_classes=(permissions.AllowAny,),
 )
@@ -23,4 +23,5 @@ urlpatterns = [
     path('auth/', include('users.urls')),
     path('buses/', include('buses.urls')),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('bookings/', include('booking.urls')),
 ]
