@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'buses',
     'channels',
     'booking',
+    'payment',
 ]
 
 REST_FRAMEWORK = {
